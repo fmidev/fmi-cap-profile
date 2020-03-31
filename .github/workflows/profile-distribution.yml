@@ -13,7 +13,7 @@ jobs:
         id: get_branch
         run: echo ::set-output name=BRANCH::${GITHUB_REF##*/}
       - name: Create output directory
-        run: mkdir -p output
+        run: mkdir -p output/${{ steps.get_branch.outputs.BRANCH }}
       - name: Copy Markdown document
         run: cp fmi-cap-profile.md output/${{ steps.get_branch.outputs.BRANCH }}/fmi-cap-profile-${{ steps.get_branch.outputs.BRANCH }}.md
       - name: Convert to HTML document
@@ -25,9 +25,3 @@ jobs:
         with:
           name: fmi-cap-profile-${{ steps.get_branch.outputs.BRANCH }}
           path: output
-      - name: Deploy site
-        uses: JamesIves/github-pages-deploy-action@releases/v3
-        with:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          BRANCH: gh-pages
-          FOLDER: output
