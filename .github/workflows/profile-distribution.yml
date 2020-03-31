@@ -19,7 +19,7 @@ jobs:
       - name: Convert to HTML document
         uses: docker://pandoc/latex:2.9.2
         with:
-          args: "--from=gfm --to=html --standalone --self-contained --css=template/style.css -o output/${{ steps.get_branch.outputs.BRANCH }}/fmi-cap-profile-${{ steps.get_branch.outputs.BRANCH }}.html fmi-cap-profile.md"
+          args: "--from=gfm --to=html --standalone --self-contained --css=resources/style.css -o output/${{ steps.get_branch.outputs.BRANCH }}/fmi-cap-profile-${{ steps.get_branch.outputs.BRANCH }}.html fmi-cap-profile.md"
       - name: Package
         uses: actions/upload-artifact@master
         with:
