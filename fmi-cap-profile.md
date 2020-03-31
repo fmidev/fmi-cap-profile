@@ -16,7 +16,7 @@ This document defines CAP profile for warnings issued by [Finnish Meteorological
 
 ## Profile versioning
 
-This profile is versioned using semantic versioning.
+This profile is versioned using semantic versioning. Changes in patch and minor versions are backwards-compatible when compatibility notes are followed in client implementation.
 
 
 ## General compatibility notes
