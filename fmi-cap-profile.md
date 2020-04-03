@@ -532,7 +532,9 @@ The `<area>` element is as specified by MetCoOp profile specification. See descr
 
 The `<areaDesc>` element contains the official localized name of the area in the language of the surrounding `<info>` element. If no localized name exists, official name in sender locale shall be used.
 
-If area has no official name (e.g. arbitrary free-hand polygons), this element is omitted. **NOTE:** this violates the MetCoOp CAP profile, which declares this element _mandatory_.
+If area has no official name (e.g. arbitrary free-hand polygons), **TBD: either**
+1. this element is omitted. **NOTE:** this violates the MetCoOp CAP profile, which declares this element _mandatory_.
+2. this element contains list of counties and/or municipalities the polygon overlaps with 20% coverage.
 
 
 ### polygon
