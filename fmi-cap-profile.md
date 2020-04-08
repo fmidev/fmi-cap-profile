@@ -527,14 +527,10 @@ The `<area>` element is as specified by MetCoOp profile specification. See descr
 
 ### areaDesc
 
-**Use:** conditional  
+**Use:** mandatory  
 **MetCoOp profile:** [areaDesc](https://git.smhi.se/metcoop/metcoop-cap-profile/blob/version-1.0/metcoop-cap-profile.md#areadesc)
 
-The `<areaDesc>` element contains the official localized name of the area in the language of the surrounding `<info>` element. If no localized name exists, official name in sender locale shall be used.
-
-If area has no official name (e.g. arbitrary free-hand polygons), **TBD: either**
-1. this element is omitted. **NOTE:** this violates the MetCoOp CAP profile, which declares this element _mandatory_.
-2. this element contains list of counties and/or municipalities the polygon overlaps with 20% coverage.
+The `<areaDesc>` element contains the official localized name of the area in the language of the surrounding `<info>` element. If no localized name exists, official name in sender locale shall be used. If area has no official name (e.g. arbitrary free-hand polygons), this element contains a comma+space (`', '`) separated list of named areas that overlap the polygon with at least 20% coverage.
 
 
 ### polygon
