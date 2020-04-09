@@ -438,21 +438,21 @@ Colour code indicating the severity of awareness level. Possible values are list
 **Use:** conditional  
 **`<valueName>`** _see table below_
 
-Existence of numeric parameters depend on the warning being issued. The table below lists possible parameters, the parameter value format and accompanying unit of measure parameter.
+Existence of numeric parameters depend on the warning being issued. The table below lists possible parameters, the parameter value format, accompanying unit of measure parameter and [event codes](#eventcode) the parameter is applicable with.
 
 The numeric parameter value is either an integer or a decimal number. In the table below the number of decimals is presented in parentheses in the _`<value>` format_ column. The value is always formatted in `en_US` locale regardless of info locale to ensure compatibility with automated systems.
 
 Most numeric parameters are accompanied by a parameter denoting unit of measure (uom). Possible unit values for each parameter is listed in the _UOM `<value>`_ column of the table below.
 
-| Parameter      | `<valueName>` | `<value>` format | UOM `<valueName>` | UOM `<value>`  |
-| :------------- | :-------------| :--------------- | :---------------- | :------------- |
-| Precipitation  | precipitation | integer          | precipitationUom  | mm/h <br> mm/d |
-| Probability    | probability   | integer          | probabilityUom    | %              |
-| Temperature    | temperature   | integer          | temperatureUom    | °C             |
-| UV index       | uvIndex       | integer          | _n/a_             | _n/a_          |
-| Wave height    | waveHeight    | decimal (1)      | waveHeightUom     | m              |
-| Wind direction | windDirection | integer          | windDirectionUom  | °              |
-| Wind intensity | windIntensity | integer          | windIntensityUom  | m/s            |
+| Parameter      | `<valueName>` | `<value>` format | UOM `<valueName>` | UOM `<value>`  | Applicable events  |
+| :------------- | :-------------| :--------------- | :---------------- | :------------- | :----------------- |
+| Precipitation  | precipitation | integer          | precipitationUom  | mm/h <br> mm/d | rain               |
+| Probability    | probability   | integer          | probabilityUom    | %              | _(optionally any)_ |
+| Temperature    | temperature   | integer          | temperatureUom    | °C             | hotWeather         |
+| UV index       | uvIndex       | integer          | _n/a_             | _n/a_          | uvNote             |
+| Wave height    | waveHeight    | decimal (1)      | waveHeightUom     | m              | seaWaveHeight      |
+| Wind direction | windDirection | integer          | windDirectionUom  | °              | seaThunderstorm <br> seaWind <br> thunderstorm <br> wind |
+| Wind intensity | windIntensity | integer          | windIntensityUom  | m/s            | seaThunderstorm <br> seaWind <br> thunderstorm <br> wind |
 
 
 #### Warning cause parameter
@@ -460,40 +460,35 @@ Most numeric parameters are accompanied by a parameter denoting unit of measure 
 **Use:** conditional  
 **`<valueName>`** eventCause
 
-Warning may contain zero or more associated causes. Possible values are listed in the table below. If warning has multiple causes, all existing values are listed in unspecified order in the `<value>` element separated by a whitespace. On zero causes the parameter is omitted.
+Warning may contain zero or more associated causes. Possible values are listed in the table below with [event codes](#eventcode) the value is  applicable with. If warning has multiple causes, all existing values are listed in unspecified order in the `<value>` element separated by a whitespace. On zero causes the parameter is omitted.
 
-| `<value>`              |
-| :--------------------- |
-| bitingFrost            |
-| blowingSnow            |
-| driftingSnow           |
-| fallingTemperature     |
-| fog                    |
-| freezingDrizzle        |
-| freezingRain           |
-| heavyRain              |
-| highWater              |
-| hoarfrostAffectedRoads |
-| iceCoveredRoads        |
-| rain                   |
-| risingTemperature      |
-| seaWind                |
-| shallowWater           |
-| sleet                  |
-| slushCoveredRoads      |
-| snow                   |
-| snowCoveredRoads       |
-| snowOnIce              |
-| snowOrSleet            |
-| snowRuttedRoads        |
-| snowstorm              |
-| strongWind             |
-| tamping                |
-| thunderstorm           |
-| tightFrost             |
-| tornado                |
-| waterOnIce             |
-| wind                   |
+| `<value>`              | Applicable events                    |
+| :--------------------- | :----------------------------------- |
+| bitingFrost            | coldWeather                          |
+| blowingSnow            | trafficWeather                       |
+| driftingSnow           | trafficWeather                       |
+| fallingTemperature     | trafficWeather                       |
+| fog                    | trafficWeather                       |
+| freezingRain           | trafficWeather                       |
+| freezingDrizzle        | trafficWeather                       |
+| highWater              | seaWaterHeight                       |
+| hoarfrostAffectedRoads | trafficWeather                       |
+| iceCoveredRoads        | trafficWeather                       |
+| rain                   | pedestrianSafety                     |
+| risingTemperature      | trafficWeather                       |
+| shallowWater           | seaWaterHeight                       |
+| sleet                  | trafficWeather                       |
+| slushCoveredRoads      | trafficWeather                       |
+| snow                   | pedestrianSafety <br> trafficWeather |
+| snowCoveredRoads       | trafficWeather                       |
+| snowOnIce              | pedestrianSafety                     |
+| snowOrSleet            | trafficWeather                       |
+| snowRuttedRoads        | trafficWeather                       |
+| snowstorm              | trafficWeather                       |
+| strongWind             | trafficWeather                       |
+| tamping                | pedestrianSafety                     |
+| tightFrost             | coldWeather                          |
+| waterOnIce             | pedestrianSafety                     |
 
 
 #### Typical impacts parameter
