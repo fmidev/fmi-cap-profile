@@ -11,7 +11,7 @@ Specification URIs:
 
 ## Overview
 
-This document defines CAP profile for warnings issued by [Finnish Meteorological Institute](https://www.ilmatieteenlaitos.fi/). The profile extends the the [MetCoOp CAP profile v1.0](https://git.smhi.se/metcoop/metcoop-cap-profile/blob/version-1.0/metcoop-cap-profile.md) placing further restrictions while being compatible.
+This document defines CAP profile for warnings issued by [Finnish Meteorological Institute](https://www.ilmatieteenlaitos.fi/). The profile extends the [MetCoOp CAP profile v1.0](https://git.smhi.se/metcoop/metcoop-cap-profile/blob/version-1.0/metcoop-cap-profile.md) placing further restrictions while being 100% compatible.
 
 
 ## Profile versioning
