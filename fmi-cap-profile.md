@@ -11,22 +11,22 @@ Specification URIs:
 
 ## Overview
 
-This document defines CAP profile for warnings issued by [Finnish Meteorological Institute](https://www.ilmatieteenlaitos.fi/). The profile extends the [MetCoOp CAP profile v1.0](https://git.smhi.se/metcoop/metcoop-cap-profile/blob/version-1.0/metcoop-cap-profile.md) placing further restrictions while being 100% compatible.
+This document defines a CAP profile for warnings issued by the [Finnish Meteorological Institute](https://www.ilmatieteenlaitos.fi/). The profile extends [MetCoOp CAP profile v1.0](https://git.smhi.se/metcoop/metcoop-cap-profile/blob/version-1.0/metcoop-cap-profile.md) by placing further restrictions while being 100% compatible.
 
 
 ## Profile versioning
 
-This profile is versioned using semantic versioning. Changes in patch and minor versions are backwards-compatible when compatibility notes are followed in client implementation.
+This profile is versioned using semantic versioning. Changes in patch and minor versions are backwards compatible when the client implementation conforms to the compatibility rules.
 
 
-## General compatibility notes
+## General compatibility rules
 
-* No expectations shall be made on element order, unless been explicitly specified otherwise.
+* No expectations shall be made on element order, unless explicitly specified otherwise.
 * No expectations shall be made on time zone. The zone offset must always be read from the [date-time element](#date-time-elements).
 * A previously unknown element value must be ignored gracefully.
 * No expectations shall be made on existence of a certain element value.
 * No expectations shall be made on element content intended for human audience.
-* Client should be able to handle any value defined by CAP standard even this profile defines it unused.
+* Client should be able to handle any value defined by CAP standard even when this profile defines it unused.
 
 
 ## Date-time elements
@@ -39,7 +39,7 @@ Date-time elements shall be presented in local time zone **Europe/Helsinki**. Th
 **Use:** mandatory  
 **MetCoOp profile:** [alert](https://git.smhi.se/metcoop/metcoop-cap-profile/blob/version-1.0/metcoop-cap-profile.md#alert)
 
-The `<alert>` element is the root element of the CAP document. The `<alert>` describes single FMI warning in all three languages (Finnish, Swedish, English) targeted at single or multiple areas.
+The `<alert>` element is the root element of the CAP document. The `<alert>` describes a single FMI warning in all three languages (Finnish, Swedish, English) targeted at a single or multiple areas.
 
 
 ### identifier
@@ -47,7 +47,7 @@ The `<alert>` element is the root element of the CAP document. The `<alert>` des
 **Use:** mandatory  
 **MetCoOp profile:** [identifier](https://git.smhi.se/metcoop/metcoop-cap-profile/blob/version-1.0/metcoop-cap-profile.md#identifier)
 
-The `<identifier>` element specifies an unique string to identify the document. The identifier is an [URN (Uniform Resource Name)](https://en.wikipedia.org/wiki/Uniform_Resource_Name) kind of [URI (Uniform Resource Identifier)](https://en.wikipedia.org/wiki/Uniform_Resource_Identifier), referencing to an [OID (Object identifier)](https://en.wikipedia.org/wiki/Object_identifier). The base of the OID is WMO alerting country-msg [2.49.0.1](http://www.oid-info.com/get/2.49.0.1).
+The `<identifier>` element specifies a unique string to identify the document. The identifier is a [URN (Uniform Resource Name)](https://en.wikipedia.org/wiki/Uniform_Resource_Name) kind of [URI (Uniform Resource Identifier)](https://en.wikipedia.org/wiki/Uniform_Resource_Identifier), referencing to an [OID (Object identifier)](https://en.wikipedia.org/wiki/Object_identifier). The base of the OID is a WMO alerting country-msg [2.49.0.1](http://www.oid-info.com/get/2.49.0.1).
 
 CAP alert identifier format of an FMI warning:
 
@@ -61,7 +61,7 @@ urn:oid:2.49.0.1.<country>.<authority>.<authority-specific-oid-tree>
 | authority       | National [alerting authority number](https://alertingauthority.wmo.int/) registered by WMO. That is `0` for FMI. |
 | authority-specific-oid-tree | An OID tree (integers separated by period) identifying the CAP message. May contain arbitrarily long non-negative integers. |
 
-**Compatibility note:** Do not parse the identifier at all. It _should_ be used only as an unique string per [sender](#sender) identifying the message. The format of identifier is subject to change in major versions, and the authority-specific-oid-tree part format is subject to change in patch versions.
+**Compatibility rule:** Do not parse the identifier at all. It _should_ be used only as a unique string per [sender](#sender) identifying the message. The format of the identifier is subject to change in major versions, and the authority-specific-oid-tree part format is subject to change in patch versions.
 
 
 ### sender
@@ -69,7 +69,7 @@ urn:oid:2.49.0.1.<country>.<authority>.<authority-specific-oid-tree>
 **Use:** mandatory  
 **MetCoOp profile:** [sender](https://git.smhi.se/metcoop/metcoop-cap-profile/blob/version-1.0/metcoop-cap-profile.md#sender)
 
-The `<sender>` element content is the [WMO alerting authority](https://alertingauthority.wmo.int/) OID ([2.49.0.0](http://www.oid-info.com/get/2.49.0.0)) in format of an URN. For FMI it is:
+The `<sender>` element content is the [WMO alerting authority](https://alertingauthority.wmo.int/) OID ([2.49.0.0](http://www.oid-info.com/get/2.49.0.0)) formatted as a URN. For FMI it is:
 
 ```
 urn:oid:2.49.0.0.246.0
@@ -129,7 +129,7 @@ The `<restriction>` element is omitted, as specified by the MetCoOp profile.
 **Use:** mandatory  
 **MetCoOp profile:** [code](https://git.smhi.se/metcoop/metcoop-cap-profile/blob/version-1.0/metcoop-cap-profile.md#code)
 
-The `<code>` element has multiple instances. Following codes are always included:
+The `<code>` element has multiple instances. The following codes are always included:
 
 1. The CAP document conforms to FMI CAP profile version 1.0.0.
 ```
@@ -141,7 +141,7 @@ profile:cap:https://alerts.fmi.fi/cap/profile/v1.0.0
 profile:cap:https://git.smhi.se/metcoop/metcoop-cap-profile/blob/version-1.0/metcoop-cap-profile.md
 ```
 
-**Compatibility note:** Within minor versions of the FMI profile the format of URL shall remain the same. Only version number is subject to change reflecting current profile version number.
+**Compatibility rule:** Within minor versions of the FMI profile the format of the URL shall remain the same. Only the version number is subject to change reflecting the current profile version number.
 
 
 ### note
@@ -157,7 +157,7 @@ The `<note>` element is omitted, as specified by the MetCoOp profile.
 **Use:** conditional  
 **MetCoOp profile:** [references](https://git.smhi.se/metcoop/metcoop-cap-profile/blob/version-1.0/metcoop-cap-profile.md#references)
 
-The `<references>` element is as specified by MetCoOp profile specification. It is _omitted_ with msgType `Alert`. With msgType `Update` or `Cancel` this element is _mandatory_ and contains references to all previously issued non-expired alerts it supersedes. The format of reference is from the CAP standard:
+The `<references>` element is as specified by MetCoOp profile specification. It is _omitted_ with msgType `Alert`. With msgType `Update` or `Cancel` this element is _mandatory_ and contains references to all previously issued non-expired alerts it supersedes. References are given in the CAP standard format:
 
 ```
 <sender>,<identifier>,<sent>
@@ -189,7 +189,7 @@ The `<info>` element has multiple instances, one localized element for each prov
 **Use:** mandatory  
 **MetCoOp profile:** [language](https://git.smhi.se/metcoop/metcoop-cap-profile/blob/version-1.0/metcoop-cap-profile.md#language)
 
-The `<language>` element has one of following values:
+The `<language>` element has one of the following values:
 
 | Language name | `<language>` |
 | ------------- | ------------ |
@@ -235,7 +235,7 @@ The `<event>` element value is a fixed localized string determined by [FMI event
 | uvNote            | UV-tiedote                 | UV-meddelande                   | UV advisory                 |
 | wind              | Tuulivaroitus maa-alueille | Vindvarning för landområden     | Wind warning for land areas |
 
-**Compatibility note:** Do not determine event from contents of `<event>` element, but instead use the [`<eventCode>`](#eventcode) with `<valueName>` referring to this profile. Use contents of this element to display the event to the end user. The `<event>` content is subject to change in patch versions.
+**Compatibility rule:** Do not determine the event from the contents of the `<event>` element. Instead, use [`<eventCode>`](#eventcode) with `<valueName>` referring to this profile. Use contents of this element to display the event to the end user. The `<event>` content is subject to change in patch versions.
 
 
 ### responseType
@@ -251,7 +251,7 @@ The `<responseType>` element is currently omitted.
 **Use:** mandatory  
 **MetCoOp profile:** [urgency](https://git.smhi.se/metcoop/metcoop-cap-profile/blob/version-1.0/metcoop-cap-profile.md#urgency)
 
-The `<urgency>` element value is determined from distance from [\<sent>](#sent) to [\<onset>](#onset). The following table describes thresholds for each of urgency values being used.
+The `<urgency>` element value is determined from the duration between [\<sent>](#sent) and [\<onset>](#onset). The following table describes the threshold for each urgency value.
 
 | Distance (h) | `<urgency>` |
 | :----------: | :---------- |
@@ -259,14 +259,14 @@ The `<urgency>` element value is determined from distance from [\<sent>](#sent) 
 | 1 ≤ _x_ < 6  | Expected    |
 | 6 ≤ _x_      | Future      |
 
-**Compatibility note:** The distance threshold values may change in minor versions.
+**Compatibility rule:** The distance threshold values may change in minor versions.
 
 ### severity
 
 **Use:** mandatory  
 **MetCoOp profile:** [severity](https://git.smhi.se/metcoop/metcoop-cap-profile/blob/version-1.0/metcoop-cap-profile.md#severity)
 
-The `<severity>` element content is mapped 1:1 with the [colour code system](https://en.ilmatieteenlaitos.fi/information-on-warnings) used by FMI. The mapping is presented in following table.
+The `<severity>` element content is mapped 1:1 with the [colour code system](https://en.ilmatieteenlaitos.fi/information-on-warnings) used by FMI. The mapping is presented in the following table.
 
 | Colour | `<severity>` |
 | :----- | :----------- |
@@ -294,7 +294,7 @@ Following `<certainty>` values are never used:
 * Unlikely
 * Unknown (as mandated by MetCoOp profile)
 
-**Compatibility note:** The probability threshold values may change in minor versions.
+**Compatibility rule:** The probability threshold values may change in minor versions.
 
 
 ### audience
@@ -310,7 +310,7 @@ The `<audience>` element is omitted, as specified by the MetCoOp profile.
 **Use:** mandatory  
 **MetCoOp profile:** [eventCode](https://git.smhi.se/metcoop/metcoop-cap-profile/blob/version-1.0/metcoop-cap-profile.md#eventcode)
 
-The `<eventCode>` element has only one instance. The `<valueName>` is always:
+The `<eventCode>` element has a single instance. Its `<valueName>` is always:
 
 ```
 profile:cap:https://alerts.fmi.fi/cap/profile/v1.0.0
@@ -336,7 +336,7 @@ The `<value>` is one of the values in the table below. See [event](#event) for c
 | uvNote            |
 | wind              |
 
-**Compatibility note:** Use the `<eventCode>` with `<valueName>` referring to this profile to determine event type instead of [`<event>`](#event). Codes may be removed (not used anymore) in minor versions. New event codes may be added in major versions.
+**Compatibility rule:** Use `<eventCode>` with `<valueName>` referring to this profile to determine the event type instead of [`<event>`](#event). Codes may be removed (not used anymore) in minor versions. New event codes may be added in major versions.
 
 
 ### effective
@@ -400,7 +400,7 @@ The `<instruction>` element is currently omitted.
 **Use:** mandatory  
 **MetCoOp profile:** [web](https://git.smhi.se/metcoop/metcoop-cap-profile/blob/version-1.0/metcoop-cap-profile.md#web)
 
-The `<web>` element content is an URL linking to the localized front page of warnings at FMI public website.
+The `<web>` element content is a URL linking to the localized warnings front page on the FMI website.
 
 
 ### contact
@@ -408,7 +408,7 @@ The `<web>` element content is an URL linking to the localized front page of war
 **Use:** mandatory  
 **MetCoOp profile:** [contact](https://git.smhi.se/metcoop/metcoop-cap-profile/blob/version-1.0/metcoop-cap-profile.md#contact)
 
-The `<contact>` element content is an URL linking to the contact information page at FMI public website.
+The `<contact>` element content is a URL linking to the contact information page on the FMI website.
 
 
 ### parameter
@@ -423,7 +423,7 @@ The `<parameter>` element has multiple instances.
 **Use:** mandatory  
 **`<valueName>`** color (_note the spelling_)
 
-Colour code indicating the severity of awareness level. Possible values are listed in the table below.
+Colour code indicating the severity of the awareness level. Possible values are listed in the table below.
 
 | `<value>` | Description                 |
 | :-------- | :-------------------------- |
@@ -438,11 +438,11 @@ Colour code indicating the severity of awareness level. Possible values are list
 **Use:** conditional  
 **`<valueName>`** _see table below_
 
-Existence of numeric parameters depend on the warning being issued. The table below lists possible parameters, the parameter value format, accompanying unit of measure parameter and [event codes](#eventcode) the parameter is applicable with.
+The existence of numeric parameters depends on the warning being issued. The table below lists possible parameters, the parameter value format, accompanying unit of measure parameter and [event codes](#eventcode) the parameter is applicable with.
 
-The numeric parameter value is either an integer or a decimal number. In the table below the number of decimals is presented in parentheses in the _`<value>` format_ column. The value is always formatted in `en_US` locale regardless of info locale to ensure compatibility with automated systems.
+The numeric parameter value is either an integer or a decimal number. In the table below the number of decimals is presented in parentheses in the _`<value>` format_ column. The value is always formatted in `en_US` locale regardless of the info locale to ensure compatibility with automated systems.
 
-Most numeric parameters are accompanied by a parameter denoting unit of measure (uom). Possible unit values for each parameter is listed in the _UOM `<value>`_ column of the table below.
+Most numeric parameters are accompanied by a parameter denoting a unit of measure (uom). Possible unit values for each parameter are listed in the _UOM `<value>`_ column of the table below.
 
 | Parameter      | `<valueName>` | `<value>` format | UOM `<valueName>` | UOM `<value>`  | Applicable events  |
 | :------------- | :-------------| :--------------- | :---------------- | :------------- | :----------------- |
@@ -460,7 +460,7 @@ Most numeric parameters are accompanied by a parameter denoting unit of measure 
 **Use:** conditional  
 **`<valueName>`** eventCause
 
-Warning may contain zero or more associated causes. Possible values are listed in the table below with [event codes](#eventcode) the value is  applicable with. If warning has multiple causes, all existing values are listed in unspecified order in the `<value>` element separated by a whitespace. On zero causes the parameter is omitted.
+Warnings may contain zero or more associated causes. Possible values are listed in the table below with [event codes](#eventcode) the value is  applicable with. If a warning has multiple causes, all existing values are listed in unspecified order in the `<value>` element separated by a whitespace. On zero causes the parameter is omitted.
 
 | `<value>`              | Applicable events                    |
 | :--------------------- | :----------------------------------- |
@@ -496,7 +496,7 @@ Warning may contain zero or more associated causes. Possible values are listed i
 **Use:** conditional  
 **`<valueName>`** typicalImpacts
 
-The `<value>` content is a localized description of typical impacts of the event. This parameter is included whenever such description exists, otherwise omitted.
+The `<value>` content is a localized description of the typical impacts of the event. This parameter is included whenever such description exists, otherwise omitted.
 
 
 #### Other parameters
@@ -549,7 +549,7 @@ The `<circle>` element is currently omitted.
 **Use:** conditional  
 **MetCoOp profile:** [geocode](https://git.smhi.se/metcoop/metcoop-cap-profile/blob/version-1.0/metcoop-cap-profile.md#geocode)
 
-The `<geocode>` element is used, when a proper value exists in code sets listed in table below. If a value exists in multiple code set, one element for each is created. When no code exists, the geocode element is omitted.
+The `<geocode>` element is used when a proper value exists in the code sets listed in the table below. If a value exists in multiple code sets, an element is created for each code set. When no code exists, the geocode element is omitted.
 
 | `<valueName>`  | `<value>` description |
 | :------------- | :-------------------- |
