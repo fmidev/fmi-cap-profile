@@ -4,9 +4,12 @@
 
 # FMI CAP Profile Version 1.0.0-draft
 
-Specification URIs:
-* https://alerts.fmi.fi/cap/profile/v1.0.0/fmi-cap-profile-v1.0.0.html
-* https://alerts.fmi.fi/cap/profile/v1.0.0/fmi-cap-profile-v1.0.0.md (Authoritative)
+This version:
+* <https://alerts.fmi.fi/cap/profile/v1.0.0/fmi-cap-profile-v1.0.0.html>
+* <https://alerts.fmi.fi/cap/profile/v1.0.0/fmi-cap-profile-v1.0.0.md> (Authoritative)
+
+Current operative version:
+* <https://alerts.fmi.fi/cap/profile/current>
 
 
 ## Overview
