@@ -2,11 +2,11 @@
 
 ---
 
-# FMI CAP Profile Version 1.0.0
+# FMI CAP Profile Version 1.0.1-draft
 
 This version:
-* <https://alerts.fmi.fi/cap/profile/v1.0.0/fmi-cap-profile-v1.0.0.html>
-* <https://alerts.fmi.fi/cap/profile/v1.0.0/fmi-cap-profile-v1.0.0.md> (Authoritative)
+* <https://alerts.fmi.fi/cap/profile/v1.0.1/fmi-cap-profile-v1.0.1.html>
+* <https://alerts.fmi.fi/cap/profile/v1.0.1/fmi-cap-profile-v1.0.1.md> (Authoritative)
 
 Current operative version:
 * <https://alerts.fmi.fi/cap/profile/current>
@@ -134,9 +134,9 @@ The `<restriction>` element is omitted, as specified by the MetCoOp profile.
 
 The `<code>` element has multiple instances. The following codes are always included:
 
-1. The CAP document conforms to FMI CAP profile version 1.0.0.
+1. The CAP document conforms to FMI CAP profile version 1.0.1.
 ```
-profile:cap:https://alerts.fmi.fi/cap/profile/v1.0.0
+profile:cap:https://alerts.fmi.fi/cap/profile/v1.0.1
 ```
 
 2. The CAP document conforms to MetCoOp CAP profile version 1.0.
@@ -316,7 +316,7 @@ The `<audience>` element is omitted, as specified by the MetCoOp profile.
 The `<eventCode>` element has a single instance. Its `<valueName>` is always:
 
 ```
-profile:cap:https://alerts.fmi.fi/cap/profile/v1.0.0
+profile:cap:https://alerts.fmi.fi/cap/profile/v1.0.1
 ```
 
 The `<value>` is one of the values in the table below. See [event](#event) for code descriptions.
