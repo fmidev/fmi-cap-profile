@@ -2,7 +2,7 @@
 
 ---
 
-# FMI CAP Profile Version 1.0.0-draft
+# FMI CAP Profile Version 1.0.0
 
 This version:
 * <https://alerts.fmi.fi/cap/profile/v1.0.0/fmi-cap-profile-v1.0.0.html>
