@@ -1,10 +1,15 @@
 # Changes in FMI CAP profile specification
 
-## v1.0.1
+## Version 1.0.1
 
-* ...
+### Changed
 
+* `<event>`: Changed event content for event code `forestFireWeather` from forest fire to wildfire.
 
-## v1.0.0
+### Removed
+
+* `<eventCode>`: Removed the `grassFireWeather` value.
+
+## Version 1.0.0
 
 Initial release.

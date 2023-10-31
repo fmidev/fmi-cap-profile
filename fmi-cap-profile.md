@@ -223,8 +223,7 @@ The `<event>` element value is a fixed localized string determined by [FMI event
 | Event code        | `<event>` Finnish          | `<event>` Swedish               | `<event>` English           |
 | :---------------- | :------------------------- | :------------------------------ | :-------------------------- |
 | coldWeather       | Pakkasvaroitus             | Varning för köld                | Cold warning                |
-| forestFireWeather | Metsäpalovaroitus          | Varning för skogsbrand          | Forest fire warning         |
-| grassFireWeather  | Ruohikkopalovaara          | Gräsbrandfara                   | Grass fire warning          |
+| forestFireWeather | Maastopalovaroitus         | Varning för terrängbrand        | Wildfire warning            |
 | hotWeather        | Hellevaroitus              | Varning för värmebölja          | Heat wave warning           |
 | pedestrianSafety  | Jalankulkusää              | Fotgängarvädret                 | Pedestrian weather warning  |
 | rain              | Sadevaroitus               | Nederbördsvarning               | Heavy rain warning          |
@@ -325,7 +324,6 @@ The `<value>` is one of the values in the table below. See [event](#event) for c
 | :---------------- |
 | coldWeather       |
 | forestFireWeather |
-| grassFireWeather  |
 | hotWeather        |
 | pedestrianSafety  |
 | rain              |
