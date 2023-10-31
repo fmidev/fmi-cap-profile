@@ -553,11 +553,11 @@ The `<circle>` element is currently omitted.
 
 The `<geocode>` element is used when a proper value exists in the code sets listed in the table below. If a value exists in multiple code sets, an element is created for each code set. When no code exists, the geocode element is omitted.
 
-| `<valueName>`  | `<value>` description |
-| :------------- | :-------------------- |
-| ISO 3166-2     | [ISO 3166-2:FI](https://fi.wikipedia.org/wiki/ISO_3166-2:FI) county code. |
-| FI-kuntanumero | Finnish municipality number ([kuntanumero](https://fi.wikipedia.org/wiki/Kuntanumero)), declared in [kuntaluettelo](https://dvv.fi/haku/-/q/kuntaluettelo) (municipality directory) published by [Digi- ja väestötietovirasto](https://dvv.fi). |
-| METAREA        | Baltic sub-areas declared in [WMO No. 9 Volume D Information for Shipping](https://community.wmo.int/activity-areas/operational-information-service/volume-d-information-shipping). |
+| `<valueName>`  | `<value>` description                                                                                                                                                                                                                         |
+|:---------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ISO 3166-2     | [ISO 3166-2:FI](https://fi.wikipedia.org/wiki/ISO_3166-2:FI) county code.                                                                                                                                                                     |
+| FI-kuntanumero | Finnish municipality number ([kuntanumero](https://fi.wikipedia.org/wiki/Kuntanumero)), declared in [kuntaluettelo](https://dvv.fi/haku?q=kuntaluettelo) (municipality directory) published by [Digi- ja väestötietovirasto](https://dvv.fi). |
+| METAREA        | Baltic sub-areas declared in [WMO No. 9 Volume D Information for Shipping](https://community.wmo.int/en/activity-areas/Marine/Pubs/WMO-No9-Vol-D-Information-for-Shipping).                                                                   |
 
 
 ### altitude
