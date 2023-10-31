@@ -2,11 +2,12 @@
 
 ---
 
-# FMI CAP Profile Version 1.0.1-draft
+# FMI CAP Profile Version 1.1.0-draft
 
 This version:
-* <https://alerts.fmi.fi/cap/profile/v1.0.1/fmi-cap-profile-v1.0.1.html>
-* <https://alerts.fmi.fi/cap/profile/v1.0.1/fmi-cap-profile-v1.0.1.md> (Authoritative)
+
+* <https://alerts.fmi.fi/cap/profile/v1.1.0/fmi-cap-profile-v1.1.0.html>
+* <https://alerts.fmi.fi/cap/profile/v1.1.0/fmi-cap-profile-v1.1.0.md> (Authoritative)
 
 Current operative version:
 * <https://alerts.fmi.fi/cap/profile/current>
@@ -134,9 +135,9 @@ The `<restriction>` element is omitted, as specified by the MetCoOp profile.
 
 The `<code>` element has multiple instances. The following codes are always included:
 
-1. The CAP document conforms to FMI CAP profile version 1.0.1.
+1. The CAP document conforms to FMI CAP profile version 1.1.0.
 ```
-profile:cap:https://alerts.fmi.fi/cap/profile/v1.0.1
+profile:cap:https://alerts.fmi.fi/cap/profile/v1.1.0
 ```
 
 2. The CAP document conforms to MetCoOp CAP profile version 1.0.
@@ -223,8 +224,7 @@ The `<event>` element value is a fixed localized string determined by [FMI event
 | Event code        | `<event>` Finnish          | `<event>` Swedish               | `<event>` English           |
 | :---------------- | :------------------------- | :------------------------------ | :-------------------------- |
 | coldWeather       | Pakkasvaroitus             | Varning för köld                | Cold warning                |
-| forestFireWeather | Metsäpalovaroitus          | Varning för skogsbrand          | Forest fire warning         |
-| grassFireWeather  | Ruohikkopalovaara          | Gräsbrandfara                   | Grass fire warning          |
+| forestFireWeather | Maastopalovaroitus         | Varning för terrängbrand        | Wildfire warning            |
 | hotWeather        | Hellevaroitus              | Varning för värmebölja          | Heat wave warning           |
 | pedestrianSafety  | Jalankulkusää              | Fotgängarvädret                 | Pedestrian weather warning  |
 | rain              | Sadevaroitus               | Nederbördsvarning               | Heavy rain warning          |
@@ -316,7 +316,7 @@ The `<audience>` element is omitted, as specified by the MetCoOp profile.
 The `<eventCode>` element has a single instance. Its `<valueName>` is always:
 
 ```
-profile:cap:https://alerts.fmi.fi/cap/profile/v1.0.1
+profile:cap:https://alerts.fmi.fi/cap/profile/v1.1.0
 ```
 
 The `<value>` is one of the values in the table below. See [event](#event) for code descriptions.
@@ -325,7 +325,6 @@ The `<value>` is one of the values in the table below. See [event](#event) for c
 | :---------------- |
 | coldWeather       |
 | forestFireWeather |
-| grassFireWeather  |
 | hotWeather        |
 | pedestrianSafety  |
 | rain              |
@@ -554,11 +553,11 @@ The `<circle>` element is currently omitted.
 
 The `<geocode>` element is used when a proper value exists in the code sets listed in the table below. If a value exists in multiple code sets, an element is created for each code set. When no code exists, the geocode element is omitted.
 
-| `<valueName>`  | `<value>` description |
-| :------------- | :-------------------- |
-| ISO 3166-2     | [ISO 3166-2:FI](https://fi.wikipedia.org/wiki/ISO_3166-2:FI) county code. |
-| FI-kuntanumero | Finnish municipality number ([kuntanumero](https://fi.wikipedia.org/wiki/Kuntanumero)), declared in [kuntaluettelo](https://dvv.fi/haku/-/q/kuntaluettelo) (municipality directory) published by [Digi- ja väestötietovirasto](https://dvv.fi). |
-| METAREA        | Baltic sub-areas declared in [WMO No. 9 Volume D Information for Shipping](https://community.wmo.int/activity-areas/operational-information-service/volume-d-information-shipping). |
+| `<valueName>`  | `<value>` description                                                                                                                                                                                                                         |
+|:---------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ISO 3166-2     | [ISO 3166-2:FI](https://fi.wikipedia.org/wiki/ISO_3166-2:FI) county code.                                                                                                                                                                     |
+| FI-kuntanumero | Finnish municipality number ([kuntanumero](https://fi.wikipedia.org/wiki/Kuntanumero)), declared in [kuntaluettelo](https://dvv.fi/haku?q=kuntaluettelo) (municipality directory) published by [Digi- ja väestötietovirasto](https://dvv.fi). |
+| METAREA        | Baltic sub-areas declared in [WMO No. 9 Volume D Information for Shipping](https://community.wmo.int/en/activity-areas/Marine/Pubs/WMO-No9-Vol-D-Information-for-Shipping).                                                                   |
 
 
 ### altitude

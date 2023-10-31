@@ -5,7 +5,7 @@ on: push
 jobs:
   create_profile_distribution:
     name: Create profile distribution
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -17,7 +17,7 @@ jobs:
       - name: Copy Markdown document
         run: cp fmi-cap-profile.md output/${{ steps.get_branch.outputs.BRANCH }}/fmi-cap-profile-${{ steps.get_branch.outputs.BRANCH }}.md
       - name: Convert to HTML document
-        uses: docker://pandoc/latex:2.9.2
+        uses: docker://pandoc/latex:2
         with:
           args: "--from=gfm --to=html --standalone --self-contained --css=resources/style.css -o output/${{ steps.get_branch.outputs.BRANCH }}/fmi-cap-profile-${{ steps.get_branch.outputs.BRANCH }}.html fmi-cap-profile.md"
       - name: Package
