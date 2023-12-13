@@ -12,6 +12,8 @@ This version:
 Current operative version:
 * <https://alerts.fmi.fi/cap/profile/current>
 
+Changelog in [HTML](CHANGELOG.html) or [Markdown](CHANGELOG.md) format.
+
 
 ## Overview
 
