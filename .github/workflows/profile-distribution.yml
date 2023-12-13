@@ -14,12 +14,18 @@ jobs:
         run: echo ::set-output name=BRANCH::${GITHUB_REF##*/}
       - name: Create output directory
         run: mkdir -p output/${{ steps.get_branch.outputs.BRANCH }}
-      - name: Copy Markdown document
+      - name: Copy profile Markdown document
         run: cp fmi-cap-profile.md output/${{ steps.get_branch.outputs.BRANCH }}/fmi-cap-profile-${{ steps.get_branch.outputs.BRANCH }}.md
-      - name: Convert to HTML document
+      - name: Convert profile to HTML document
         uses: docker://pandoc/latex:2
         with:
           args: "--from=gfm --to=html --standalone --self-contained --css=resources/style.css -o output/${{ steps.get_branch.outputs.BRANCH }}/fmi-cap-profile-${{ steps.get_branch.outputs.BRANCH }}.html fmi-cap-profile.md"
+      - name: Copy changelog Markdown document
+        run: cp CHANGELOG.md output/${{ steps.get_branch.outputs.BRANCH }}/
+      - name: Convert changelog to HTML document
+        uses: docker://pandoc/latex:2
+        with:
+          args: "--from=gfm --to=html --standalone --self-contained --css=resources/style.css -o output/${{ steps.get_branch.outputs.BRANCH }}/CHANGELOG.html CHANGELOG.md"
       - name: Package
         uses: actions/upload-artifact@master
         with:
