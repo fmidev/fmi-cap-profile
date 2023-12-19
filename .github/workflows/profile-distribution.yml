@@ -8,26 +8,40 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Get branch name
         id: get_branch
-        run: echo ::set-output name=BRANCH::${GITHUB_REF##*/}
+        run: echo "BRANCH=${GITHUB_REF##*/}" >> "$GITHUB_OUTPUT"
       - name: Create output directory
-        run: mkdir -p output/${{ steps.get_branch.outputs.BRANCH }}
+        run: mkdir -p "output/${{ steps.get_branch.outputs.BRANCH }}"
       - name: Copy profile Markdown document
-        run: cp fmi-cap-profile.md output/${{ steps.get_branch.outputs.BRANCH }}/fmi-cap-profile-${{ steps.get_branch.outputs.BRANCH }}.md
+        run: cp fmi-cap-profile.md "output/${{ steps.get_branch.outputs.BRANCH }}/fmi-cap-profile-${{ steps.get_branch.outputs.BRANCH }}.md"
       - name: Convert profile to HTML document
         uses: docker://pandoc/latex:2
         with:
-          args: "--from=gfm --to=html --standalone --self-contained --css=resources/style.css -o output/${{ steps.get_branch.outputs.BRANCH }}/fmi-cap-profile-${{ steps.get_branch.outputs.BRANCH }}.html fmi-cap-profile.md"
+          args: >-
+            --from=gfm
+            --to=html
+            --standalone
+            --embed-resources
+            --css=resources/style.css
+            -o "output/${{ steps.get_branch.outputs.BRANCH }}/fmi-cap-profile-${{ steps.get_branch.outputs.BRANCH }}.html"
+            fmi-cap-profile.md
       - name: Copy changelog Markdown document
-        run: cp CHANGELOG.md output/${{ steps.get_branch.outputs.BRANCH }}/
+        run: cp CHANGELOG.md "output/${{ steps.get_branch.outputs.BRANCH }}/"
       - name: Convert changelog to HTML document
         uses: docker://pandoc/latex:2
         with:
-          args: "--from=gfm --to=html --standalone --self-contained --css=resources/style.css -o output/${{ steps.get_branch.outputs.BRANCH }}/CHANGELOG.html CHANGELOG.md"
+          args: >- 
+            --from=gfm
+            --to=html
+            --standalone
+            --embed-resources
+            --css=resources/style.css
+            -o "output/${{ steps.get_branch.outputs.BRANCH }}/CHANGELOG.html"
+            CHANGELOG.md
       - name: Package
         uses: actions/upload-artifact@master
         with:
-          name: fmi-cap-profile-${{ steps.get_branch.outputs.BRANCH }}
+          name: "fmi-cap-profile-${{ steps.get_branch.outputs.BRANCH }}"
           path: output
