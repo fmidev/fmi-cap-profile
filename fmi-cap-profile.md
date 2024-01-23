@@ -2,7 +2,7 @@
 
 ---
 
-# FMI CAP Profile Version 1.1.0-draft
+# FMI CAP Profile Version 1.1.0
 
 This version:
 
